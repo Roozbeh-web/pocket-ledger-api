@@ -17,7 +17,7 @@ def monthly_total(user, category, year, month, exclude_expance_id=None):
     if exclude_expance_id is not None:
         qs = qs.exclude(id=exclude_expance_id)
 
-    result = qs.aaggregate(total=Sum('amount'))['total']
+    result = qs.aggregate(total=Sum('amount'))['total']
     return result or Decimal('0')
 
 def check_budget(user, category, amount, expense_date, exclude_expense_id=None):
